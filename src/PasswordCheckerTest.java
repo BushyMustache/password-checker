@@ -15,7 +15,14 @@ public class PasswordCheckerTest {
   @Test 
   void testForShortPasswordLength() {
     PasswordChecker passwordUtils = new PasswordChecker(7, 14);
-    String actual = passwordUtils.describePasswordLength("byebye");
+    String actual = passwordUtils.describePasswordLength("byebye1");
     assertTrue(actual == "short");
+  }
+
+  @Test
+  void testForMediumPasswordLength() {
+    PasswordChecker passwordUtils = new PasswordChecker(7, 14);
+    String actual = passwordUtils.describePasswordLength("byebyebyebye1");
+    assertTrue(actual == "medium");
   }
 }
