@@ -25,4 +25,11 @@ public class PasswordCheckerTest {
     String actual = passwordUtils.describePasswordLength("byebyebyebye1");
     assertTrue(actual == "medium");
   }
+
+  @Test
+  void testForLongPasswordLength() {
+    PasswordChecker passwordUtils = new PasswordChecker(7, 14);
+    String actual = passwordUtils.describePasswordLength("seahawks12$12helloworld");
+    assertTrue(actual == "long");
+  }
 }
