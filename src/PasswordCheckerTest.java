@@ -34,16 +34,30 @@ public class PasswordCheckerTest {
   }
 
   @Test
+  void testForNoPasword() {
+    PasswordChecker passwordUtils = new PasswordChecker(7, 14);
+    String actual = passwordUtils.describePasswordLength("        ");
+    assertTrue(actual == "short");
+  }
+
+  @Test
   void testForAlphaNumericPassword() {
     PasswordChecker passwordUtils = new PasswordChecker(7, 14);
-    boolean actual = passwordUtils.isAlphanumeric("byebye123");
+    boolean actual = passwordUtils.isAlphanumeric("123567");
     assertTrue(actual == true);
   }
 
   @Test
   void testForEmptyPassword() {
-     PasswordChecker passwordUtils = new PasswordChecker(7, 14);
-     boolean actual = passwordUtils.isAlphanumeric("");
-     assertTrue(actual == false);
+    PasswordChecker passwordUtils = new PasswordChecker(7, 14);
+    boolean actual = passwordUtils.isAlphanumeric(" ");
+    assertTrue(actual == false);
+  }
+
+  @Test
+  void testForNonAlphaNumericCharacter() {
+    PasswordChecker passwordUtils = new PasswordChecker(7, 14);
+    boolean actual = passwordUtils.isAlphanumeric("byebye@");
+    assertTrue(actual == false);
   }
 }
