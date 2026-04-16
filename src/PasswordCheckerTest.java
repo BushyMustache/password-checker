@@ -39,4 +39,11 @@ public class PasswordCheckerTest {
     boolean actual = passwordUtils.isAlphanumeric("byebye123");
     assertTrue(actual == true);
   }
+
+  @Test
+  void testForEmptyPassword() {
+     PasswordChecker passwordUtils = new PasswordChecker(7, 14);
+     boolean actual = passwordUtils.isAlphanumeric("");
+     assertTrue(actual == false);
+  }
 }
