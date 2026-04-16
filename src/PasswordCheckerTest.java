@@ -32,4 +32,11 @@ public class PasswordCheckerTest {
     String actual = passwordUtils.describePasswordLength("seahawks12$12helloworld");
     assertTrue(actual == "long");
   }
+
+  @Test
+  void testForAlphaNumericPassword() {
+    PasswordChecker passwordUtils = new PasswordChecker(7, 14);
+    boolean actual = passwordUtils.isAlphanumeric("byebye123");
+    assertTrue(actual == true);
+  }
 }
